@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package auth.v1;
+
+option go_package = "github.com/teacinema-go/contracts/gen/go/auth/v1;authv1";
+
+service AuthService{
+  rpc SendOtp (SendOtpRequest) returns (SendOtpResponse);
+}
+
+message SendOtpRequest{
+  string identifier = 1;
+  string type = 2;
+}
+
+message SendOtpResponse{
+  bool ok = 1;
+}
