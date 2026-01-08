@@ -121,7 +121,7 @@ type VerifyOtpRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Identifier    string                 `protobuf:"bytes,1,opt,name=identifier,proto3" json:"identifier,omitempty"`
 	Type          string                 `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
-	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	Otp           string                 `protobuf:"bytes,3,opt,name=otp,proto3" json:"otp,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -170,9 +170,9 @@ func (x *VerifyOtpRequest) GetType() string {
 	return ""
 }
 
-func (x *VerifyOtpRequest) GetCode() string {
+func (x *VerifyOtpRequest) GetOtp() string {
 	if x != nil {
-		return x.Code
+		return x.Otp
 	}
 	return ""
 }
@@ -240,13 +240,13 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"identifier\x12\x12\n" +
 	"\x04type\x18\x02 \x01(\tR\x04type\"!\n" +
 	"\x0fSendOtpResponse\x12\x0e\n" +
-	"\x02ok\x18\x01 \x01(\bR\x02ok\"Z\n" +
+	"\x02ok\x18\x01 \x01(\bR\x02ok\"X\n" +
 	"\x10VerifyOtpRequest\x12\x1e\n" +
 	"\n" +
 	"identifier\x18\x01 \x01(\tR\n" +
 	"identifier\x12\x12\n" +
-	"\x04type\x18\x02 \x01(\tR\x04type\x12\x12\n" +
-	"\x04code\x18\x03 \x01(\tR\x04code\"[\n" +
+	"\x04type\x18\x02 \x01(\tR\x04type\x12\x10\n" +
+	"\x03otp\x18\x03 \x01(\tR\x03otp\"[\n" +
 	"\x11VerifyOtpResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
 	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken2\x8f\x01\n" +
