@@ -127,6 +127,7 @@ const (
 	VerifyOtpResponse_INVALID_IDENTIFIER_TYPE VerifyOtpResponse_ErrorCode = 2
 	VerifyOtpResponse_INVALID_OTP             VerifyOtpResponse_ErrorCode = 3
 	VerifyOtpResponse_EXPIRED_OTP             VerifyOtpResponse_ErrorCode = 4
+	VerifyOtpResponse_ACCOUNT_NOT_FOUND       VerifyOtpResponse_ErrorCode = 5
 )
 
 // Enum value maps for VerifyOtpResponse_ErrorCode.
@@ -137,6 +138,7 @@ var (
 		2: "INVALID_IDENTIFIER_TYPE",
 		3: "INVALID_OTP",
 		4: "EXPIRED_OTP",
+		5: "ACCOUNT_NOT_FOUND",
 	}
 	VerifyOtpResponse_ErrorCode_value = map[string]int32{
 		"ERROR_CODE_UNSPECIFIED":  0,
@@ -144,6 +146,7 @@ var (
 		"INVALID_IDENTIFIER_TYPE": 2,
 		"INVALID_OTP":             3,
 		"EXPIRED_OTP":             4,
+		"ACCOUNT_NOT_FOUND":       5,
 	}
 )
 
@@ -553,7 +556,7 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"identifier\x18\x01 \x01(\tR\n" +
 	"identifier\x12@\n" +
 	"\x0fidentifier_type\x18\x02 \x01(\x0e2\x17.auth.v1.IdentifierTypeR\x0eidentifierType\x12\x10\n" +
-	"\x03otp\x18\x03 \x01(\tR\x03otp\"\xd7\x03\n" +
+	"\x03otp\x18\x03 \x01(\tR\x03otp\"\xef\x03\n" +
 	"\x11VerifyOtpResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12C\n" +
 	"\n" +
@@ -564,13 +567,14 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"AuthTokens\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
 	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\x12,\n" +
-	"\x12expires_in_seconds\x18\x03 \x01(\x05R\x10expiresInSeconds\"z\n" +
+	"\x12expires_in_seconds\x18\x03 \x01(\x05R\x10expiresInSeconds\"\x91\x01\n" +
 	"\tErrorCode\x12\x1a\n" +
 	"\x16ERROR_CODE_UNSPECIFIED\x10\x00\x12\x12\n" +
 	"\x0eINTERNAL_ERROR\x10\x01\x12\x1b\n" +
 	"\x17INVALID_IDENTIFIER_TYPE\x10\x02\x12\x0f\n" +
 	"\vINVALID_OTP\x10\x03\x12\x0f\n" +
-	"\vEXPIRED_OTP\x10\x04*G\n" +
+	"\vEXPIRED_OTP\x10\x04\x12\x15\n" +
+	"\x11ACCOUNT_NOT_FOUND\x10\x05*G\n" +
 	"\x0eIdentifierType\x12\x1f\n" +
 	"\x1bIDENTIFIER_TYPE_UNSPECIFIED\x10\x00\x12\t\n" +
 	"\x05PHONE\x10\x01\x12\t\n" +
