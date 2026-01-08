@@ -11,20 +11,56 @@ service AuthService{
 
 message SendOtpRequest{
   string identifier = 1;
-  string type = 2;
+  IdentifierType identifier_type = 2;
 }
 
-message SendOtpResponse{
-  bool ok = 1;
+message SendOtpResponse {
+  bool success = 1;
+  ErrorCode error_code = 2;
+  string error_message = 3;
+  OtpInfo otp_info = 4;
+
+  message OtpInfo {
+    int32 expires_in_seconds = 1; // -1 for infinity
+  }
+
+  enum ErrorCode {
+    ERROR_CODE_UNSPECIFIED = 0;
+    INTERNAL_ERROR = 1;
+    INVALID_IDENTIFIER_TYPE = 2;
+  }
 }
+
 
 message VerifyOtpRequest{
   string identifier = 1;
-  string type = 2;
+  IdentifierType identifier_type = 2;
   string otp = 3;
 }
 
 message VerifyOtpResponse{
-  string access_token = 1;
-  string refresh_token = 2;
+  bool success = 1;
+  ErrorCode error_code = 2;
+  string error_message = 3;
+  AuthTokens tokens = 4;
+
+  message AuthTokens {
+    string access_token = 1;
+    string refresh_token = 2;
+    int32 expires_in_seconds = 3; // access_token, -1 for infinity
+  }
+
+  enum ErrorCode {
+    ERROR_CODE_UNSPECIFIED = 0;
+    INTERNAL_ERROR = 1;
+    INVALID_IDENTIFIER_TYPE = 2;
+    INVALID_OTP = 3;
+    EXPIRED_OTP = 4;
+  }
+}
+
+enum IdentifierType {
+  IDENTIFIER_TYPE_UNSPECIFIED = 0;
+  PHONE = 1;
+  EMAIL = 2;
 }

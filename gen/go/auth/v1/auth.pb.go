@@ -21,12 +21,165 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type IdentifierType int32
+
+const (
+	IdentifierType_IDENTIFIER_TYPE_UNSPECIFIED IdentifierType = 0
+	IdentifierType_PHONE                       IdentifierType = 1
+	IdentifierType_EMAIL                       IdentifierType = 2
+)
+
+// Enum value maps for IdentifierType.
+var (
+	IdentifierType_name = map[int32]string{
+		0: "IDENTIFIER_TYPE_UNSPECIFIED",
+		1: "PHONE",
+		2: "EMAIL",
+	}
+	IdentifierType_value = map[string]int32{
+		"IDENTIFIER_TYPE_UNSPECIFIED": 0,
+		"PHONE":                       1,
+		"EMAIL":                       2,
+	}
+)
+
+func (x IdentifierType) Enum() *IdentifierType {
+	p := new(IdentifierType)
+	*p = x
+	return p
+}
+
+func (x IdentifierType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (IdentifierType) Descriptor() protoreflect.EnumDescriptor {
+	return file_auth_v1_auth_proto_enumTypes[0].Descriptor()
+}
+
+func (IdentifierType) Type() protoreflect.EnumType {
+	return &file_auth_v1_auth_proto_enumTypes[0]
+}
+
+func (x IdentifierType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use IdentifierType.Descriptor instead.
+func (IdentifierType) EnumDescriptor() ([]byte, []int) {
+	return file_auth_v1_auth_proto_rawDescGZIP(), []int{0}
+}
+
+type SendOtpResponse_ErrorCode int32
+
+const (
+	SendOtpResponse_ERROR_CODE_UNSPECIFIED  SendOtpResponse_ErrorCode = 0
+	SendOtpResponse_INTERNAL_ERROR          SendOtpResponse_ErrorCode = 1
+	SendOtpResponse_INVALID_IDENTIFIER_TYPE SendOtpResponse_ErrorCode = 2
+)
+
+// Enum value maps for SendOtpResponse_ErrorCode.
+var (
+	SendOtpResponse_ErrorCode_name = map[int32]string{
+		0: "ERROR_CODE_UNSPECIFIED",
+		1: "INTERNAL_ERROR",
+		2: "INVALID_IDENTIFIER_TYPE",
+	}
+	SendOtpResponse_ErrorCode_value = map[string]int32{
+		"ERROR_CODE_UNSPECIFIED":  0,
+		"INTERNAL_ERROR":          1,
+		"INVALID_IDENTIFIER_TYPE": 2,
+	}
+)
+
+func (x SendOtpResponse_ErrorCode) Enum() *SendOtpResponse_ErrorCode {
+	p := new(SendOtpResponse_ErrorCode)
+	*p = x
+	return p
+}
+
+func (x SendOtpResponse_ErrorCode) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (SendOtpResponse_ErrorCode) Descriptor() protoreflect.EnumDescriptor {
+	return file_auth_v1_auth_proto_enumTypes[1].Descriptor()
+}
+
+func (SendOtpResponse_ErrorCode) Type() protoreflect.EnumType {
+	return &file_auth_v1_auth_proto_enumTypes[1]
+}
+
+func (x SendOtpResponse_ErrorCode) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use SendOtpResponse_ErrorCode.Descriptor instead.
+func (SendOtpResponse_ErrorCode) EnumDescriptor() ([]byte, []int) {
+	return file_auth_v1_auth_proto_rawDescGZIP(), []int{1, 0}
+}
+
+type VerifyOtpResponse_ErrorCode int32
+
+const (
+	VerifyOtpResponse_ERROR_CODE_UNSPECIFIED  VerifyOtpResponse_ErrorCode = 0
+	VerifyOtpResponse_INTERNAL_ERROR          VerifyOtpResponse_ErrorCode = 1
+	VerifyOtpResponse_INVALID_IDENTIFIER_TYPE VerifyOtpResponse_ErrorCode = 2
+	VerifyOtpResponse_INVALID_OTP             VerifyOtpResponse_ErrorCode = 3
+	VerifyOtpResponse_EXPIRED_OTP             VerifyOtpResponse_ErrorCode = 4
+)
+
+// Enum value maps for VerifyOtpResponse_ErrorCode.
+var (
+	VerifyOtpResponse_ErrorCode_name = map[int32]string{
+		0: "ERROR_CODE_UNSPECIFIED",
+		1: "INTERNAL_ERROR",
+		2: "INVALID_IDENTIFIER_TYPE",
+		3: "INVALID_OTP",
+		4: "EXPIRED_OTP",
+	}
+	VerifyOtpResponse_ErrorCode_value = map[string]int32{
+		"ERROR_CODE_UNSPECIFIED":  0,
+		"INTERNAL_ERROR":          1,
+		"INVALID_IDENTIFIER_TYPE": 2,
+		"INVALID_OTP":             3,
+		"EXPIRED_OTP":             4,
+	}
+)
+
+func (x VerifyOtpResponse_ErrorCode) Enum() *VerifyOtpResponse_ErrorCode {
+	p := new(VerifyOtpResponse_ErrorCode)
+	*p = x
+	return p
+}
+
+func (x VerifyOtpResponse_ErrorCode) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (VerifyOtpResponse_ErrorCode) Descriptor() protoreflect.EnumDescriptor {
+	return file_auth_v1_auth_proto_enumTypes[2].Descriptor()
+}
+
+func (VerifyOtpResponse_ErrorCode) Type() protoreflect.EnumType {
+	return &file_auth_v1_auth_proto_enumTypes[2]
+}
+
+func (x VerifyOtpResponse_ErrorCode) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use VerifyOtpResponse_ErrorCode.Descriptor instead.
+func (VerifyOtpResponse_ErrorCode) EnumDescriptor() ([]byte, []int) {
+	return file_auth_v1_auth_proto_rawDescGZIP(), []int{3, 0}
+}
+
 type SendOtpRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Identifier    string                 `protobuf:"bytes,1,opt,name=identifier,proto3" json:"identifier,omitempty"`
-	Type          string                 `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Identifier     string                 `protobuf:"bytes,1,opt,name=identifier,proto3" json:"identifier,omitempty"`
+	IdentifierType IdentifierType         `protobuf:"varint,2,opt,name=identifier_type,json=identifierType,proto3,enum=auth.v1.IdentifierType" json:"identifier_type,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *SendOtpRequest) Reset() {
@@ -66,16 +219,19 @@ func (x *SendOtpRequest) GetIdentifier() string {
 	return ""
 }
 
-func (x *SendOtpRequest) GetType() string {
+func (x *SendOtpRequest) GetIdentifierType() IdentifierType {
 	if x != nil {
-		return x.Type
+		return x.IdentifierType
 	}
-	return ""
+	return IdentifierType_IDENTIFIER_TYPE_UNSPECIFIED
 }
 
 type SendOtpResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Ok            bool                   `protobuf:"varint,1,opt,name=ok,proto3" json:"ok,omitempty"`
+	state         protoimpl.MessageState    `protogen:"open.v1"`
+	Success       bool                      `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	ErrorCode     SendOtpResponse_ErrorCode `protobuf:"varint,2,opt,name=error_code,json=errorCode,proto3,enum=auth.v1.SendOtpResponse_ErrorCode" json:"error_code,omitempty"`
+	ErrorMessage  string                    `protobuf:"bytes,3,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
+	OtpInfo       *SendOtpResponse_OtpInfo  `protobuf:"bytes,4,opt,name=otp_info,json=otpInfo,proto3" json:"otp_info,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -110,20 +266,41 @@ func (*SendOtpResponse) Descriptor() ([]byte, []int) {
 	return file_auth_v1_auth_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *SendOtpResponse) GetOk() bool {
+func (x *SendOtpResponse) GetSuccess() bool {
 	if x != nil {
-		return x.Ok
+		return x.Success
 	}
 	return false
 }
 
+func (x *SendOtpResponse) GetErrorCode() SendOtpResponse_ErrorCode {
+	if x != nil {
+		return x.ErrorCode
+	}
+	return SendOtpResponse_ERROR_CODE_UNSPECIFIED
+}
+
+func (x *SendOtpResponse) GetErrorMessage() string {
+	if x != nil {
+		return x.ErrorMessage
+	}
+	return ""
+}
+
+func (x *SendOtpResponse) GetOtpInfo() *SendOtpResponse_OtpInfo {
+	if x != nil {
+		return x.OtpInfo
+	}
+	return nil
+}
+
 type VerifyOtpRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Identifier    string                 `protobuf:"bytes,1,opt,name=identifier,proto3" json:"identifier,omitempty"`
-	Type          string                 `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
-	Otp           string                 `protobuf:"bytes,3,opt,name=otp,proto3" json:"otp,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Identifier     string                 `protobuf:"bytes,1,opt,name=identifier,proto3" json:"identifier,omitempty"`
+	IdentifierType IdentifierType         `protobuf:"varint,2,opt,name=identifier_type,json=identifierType,proto3,enum=auth.v1.IdentifierType" json:"identifier_type,omitempty"`
+	Otp            string                 `protobuf:"bytes,3,opt,name=otp,proto3" json:"otp,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *VerifyOtpRequest) Reset() {
@@ -163,11 +340,11 @@ func (x *VerifyOtpRequest) GetIdentifier() string {
 	return ""
 }
 
-func (x *VerifyOtpRequest) GetType() string {
+func (x *VerifyOtpRequest) GetIdentifierType() IdentifierType {
 	if x != nil {
-		return x.Type
+		return x.IdentifierType
 	}
-	return ""
+	return IdentifierType_IDENTIFIER_TYPE_UNSPECIFIED
 }
 
 func (x *VerifyOtpRequest) GetOtp() string {
@@ -178,9 +355,11 @@ func (x *VerifyOtpRequest) GetOtp() string {
 }
 
 type VerifyOtpResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
-	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	state         protoimpl.MessageState        `protogen:"open.v1"`
+	Success       bool                          `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	ErrorCode     VerifyOtpResponse_ErrorCode   `protobuf:"varint,2,opt,name=error_code,json=errorCode,proto3,enum=auth.v1.VerifyOtpResponse_ErrorCode" json:"error_code,omitempty"`
+	ErrorMessage  string                        `protobuf:"bytes,3,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
+	Tokens        *VerifyOtpResponse_AuthTokens `protobuf:"bytes,4,opt,name=tokens,proto3" json:"tokens,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -215,41 +394,187 @@ func (*VerifyOtpResponse) Descriptor() ([]byte, []int) {
 	return file_auth_v1_auth_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *VerifyOtpResponse) GetAccessToken() string {
+func (x *VerifyOtpResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+func (x *VerifyOtpResponse) GetErrorCode() VerifyOtpResponse_ErrorCode {
+	if x != nil {
+		return x.ErrorCode
+	}
+	return VerifyOtpResponse_ERROR_CODE_UNSPECIFIED
+}
+
+func (x *VerifyOtpResponse) GetErrorMessage() string {
+	if x != nil {
+		return x.ErrorMessage
+	}
+	return ""
+}
+
+func (x *VerifyOtpResponse) GetTokens() *VerifyOtpResponse_AuthTokens {
+	if x != nil {
+		return x.Tokens
+	}
+	return nil
+}
+
+type SendOtpResponse_OtpInfo struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	ExpiresInSeconds int32                  `protobuf:"varint,1,opt,name=expires_in_seconds,json=expiresInSeconds,proto3" json:"expires_in_seconds,omitempty"` // -1 for infinity
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *SendOtpResponse_OtpInfo) Reset() {
+	*x = SendOtpResponse_OtpInfo{}
+	mi := &file_auth_v1_auth_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SendOtpResponse_OtpInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SendOtpResponse_OtpInfo) ProtoMessage() {}
+
+func (x *SendOtpResponse_OtpInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_v1_auth_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SendOtpResponse_OtpInfo.ProtoReflect.Descriptor instead.
+func (*SendOtpResponse_OtpInfo) Descriptor() ([]byte, []int) {
+	return file_auth_v1_auth_proto_rawDescGZIP(), []int{1, 0}
+}
+
+func (x *SendOtpResponse_OtpInfo) GetExpiresInSeconds() int32 {
+	if x != nil {
+		return x.ExpiresInSeconds
+	}
+	return 0
+}
+
+type VerifyOtpResponse_AuthTokens struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	AccessToken      string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	RefreshToken     string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	ExpiresInSeconds int32                  `protobuf:"varint,3,opt,name=expires_in_seconds,json=expiresInSeconds,proto3" json:"expires_in_seconds,omitempty"` // access_token, -1 for infinity
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *VerifyOtpResponse_AuthTokens) Reset() {
+	*x = VerifyOtpResponse_AuthTokens{}
+	mi := &file_auth_v1_auth_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VerifyOtpResponse_AuthTokens) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VerifyOtpResponse_AuthTokens) ProtoMessage() {}
+
+func (x *VerifyOtpResponse_AuthTokens) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_v1_auth_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VerifyOtpResponse_AuthTokens.ProtoReflect.Descriptor instead.
+func (*VerifyOtpResponse_AuthTokens) Descriptor() ([]byte, []int) {
+	return file_auth_v1_auth_proto_rawDescGZIP(), []int{3, 0}
+}
+
+func (x *VerifyOtpResponse_AuthTokens) GetAccessToken() string {
 	if x != nil {
 		return x.AccessToken
 	}
 	return ""
 }
 
-func (x *VerifyOtpResponse) GetRefreshToken() string {
+func (x *VerifyOtpResponse_AuthTokens) GetRefreshToken() string {
 	if x != nil {
 		return x.RefreshToken
 	}
 	return ""
 }
 
+func (x *VerifyOtpResponse_AuthTokens) GetExpiresInSeconds() int32 {
+	if x != nil {
+		return x.ExpiresInSeconds
+	}
+	return 0
+}
+
 var File_auth_v1_auth_proto protoreflect.FileDescriptor
 
 const file_auth_v1_auth_proto_rawDesc = "" +
 	"\n" +
-	"\x12auth/v1/auth.proto\x12\aauth.v1\"D\n" +
+	"\x12auth/v1/auth.proto\x12\aauth.v1\"r\n" +
 	"\x0eSendOtpRequest\x12\x1e\n" +
 	"\n" +
 	"identifier\x18\x01 \x01(\tR\n" +
-	"identifier\x12\x12\n" +
-	"\x04type\x18\x02 \x01(\tR\x04type\"!\n" +
-	"\x0fSendOtpResponse\x12\x0e\n" +
-	"\x02ok\x18\x01 \x01(\bR\x02ok\"X\n" +
+	"identifier\x12@\n" +
+	"\x0fidentifier_type\x18\x02 \x01(\x0e2\x17.auth.v1.IdentifierTypeR\x0eidentifierType\"\xe3\x02\n" +
+	"\x0fSendOtpResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\x12A\n" +
+	"\n" +
+	"error_code\x18\x02 \x01(\x0e2\".auth.v1.SendOtpResponse.ErrorCodeR\terrorCode\x12#\n" +
+	"\rerror_message\x18\x03 \x01(\tR\ferrorMessage\x12;\n" +
+	"\botp_info\x18\x04 \x01(\v2 .auth.v1.SendOtpResponse.OtpInfoR\aotpInfo\x1a7\n" +
+	"\aOtpInfo\x12,\n" +
+	"\x12expires_in_seconds\x18\x01 \x01(\x05R\x10expiresInSeconds\"X\n" +
+	"\tErrorCode\x12\x1a\n" +
+	"\x16ERROR_CODE_UNSPECIFIED\x10\x00\x12\x12\n" +
+	"\x0eINTERNAL_ERROR\x10\x01\x12\x1b\n" +
+	"\x17INVALID_IDENTIFIER_TYPE\x10\x02\"\x86\x01\n" +
 	"\x10VerifyOtpRequest\x12\x1e\n" +
 	"\n" +
 	"identifier\x18\x01 \x01(\tR\n" +
-	"identifier\x12\x12\n" +
-	"\x04type\x18\x02 \x01(\tR\x04type\x12\x10\n" +
-	"\x03otp\x18\x03 \x01(\tR\x03otp\"[\n" +
-	"\x11VerifyOtpResponse\x12!\n" +
+	"identifier\x12@\n" +
+	"\x0fidentifier_type\x18\x02 \x01(\x0e2\x17.auth.v1.IdentifierTypeR\x0eidentifierType\x12\x10\n" +
+	"\x03otp\x18\x03 \x01(\tR\x03otp\"\xd7\x03\n" +
+	"\x11VerifyOtpResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\x12C\n" +
+	"\n" +
+	"error_code\x18\x02 \x01(\x0e2$.auth.v1.VerifyOtpResponse.ErrorCodeR\terrorCode\x12#\n" +
+	"\rerror_message\x18\x03 \x01(\tR\ferrorMessage\x12=\n" +
+	"\x06tokens\x18\x04 \x01(\v2%.auth.v1.VerifyOtpResponse.AuthTokensR\x06tokens\x1a\x82\x01\n" +
+	"\n" +
+	"AuthTokens\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken2\x8f\x01\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\x12,\n" +
+	"\x12expires_in_seconds\x18\x03 \x01(\x05R\x10expiresInSeconds\"z\n" +
+	"\tErrorCode\x12\x1a\n" +
+	"\x16ERROR_CODE_UNSPECIFIED\x10\x00\x12\x12\n" +
+	"\x0eINTERNAL_ERROR\x10\x01\x12\x1b\n" +
+	"\x17INVALID_IDENTIFIER_TYPE\x10\x02\x12\x0f\n" +
+	"\vINVALID_OTP\x10\x03\x12\x0f\n" +
+	"\vEXPIRED_OTP\x10\x04*G\n" +
+	"\x0eIdentifierType\x12\x1f\n" +
+	"\x1bIDENTIFIER_TYPE_UNSPECIFIED\x10\x00\x12\t\n" +
+	"\x05PHONE\x10\x01\x12\t\n" +
+	"\x05EMAIL\x10\x022\x8f\x01\n" +
 	"\vAuthService\x12<\n" +
 	"\aSendOtp\x12\x17.auth.v1.SendOtpRequest\x1a\x18.auth.v1.SendOtpResponse\x12B\n" +
 	"\tVerifyOtp\x12\x19.auth.v1.VerifyOtpRequest\x1a\x1a.auth.v1.VerifyOtpResponseB9Z7github.com/teacinema-go/contracts/gen/go/auth/v1;authv1b\x06proto3"
@@ -266,23 +591,35 @@ func file_auth_v1_auth_proto_rawDescGZIP() []byte {
 	return file_auth_v1_auth_proto_rawDescData
 }
 
-var file_auth_v1_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_auth_v1_auth_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
+var file_auth_v1_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_auth_v1_auth_proto_goTypes = []any{
-	(*SendOtpRequest)(nil),    // 0: auth.v1.SendOtpRequest
-	(*SendOtpResponse)(nil),   // 1: auth.v1.SendOtpResponse
-	(*VerifyOtpRequest)(nil),  // 2: auth.v1.VerifyOtpRequest
-	(*VerifyOtpResponse)(nil), // 3: auth.v1.VerifyOtpResponse
+	(IdentifierType)(0),                  // 0: auth.v1.IdentifierType
+	(SendOtpResponse_ErrorCode)(0),       // 1: auth.v1.SendOtpResponse.ErrorCode
+	(VerifyOtpResponse_ErrorCode)(0),     // 2: auth.v1.VerifyOtpResponse.ErrorCode
+	(*SendOtpRequest)(nil),               // 3: auth.v1.SendOtpRequest
+	(*SendOtpResponse)(nil),              // 4: auth.v1.SendOtpResponse
+	(*VerifyOtpRequest)(nil),             // 5: auth.v1.VerifyOtpRequest
+	(*VerifyOtpResponse)(nil),            // 6: auth.v1.VerifyOtpResponse
+	(*SendOtpResponse_OtpInfo)(nil),      // 7: auth.v1.SendOtpResponse.OtpInfo
+	(*VerifyOtpResponse_AuthTokens)(nil), // 8: auth.v1.VerifyOtpResponse.AuthTokens
 }
 var file_auth_v1_auth_proto_depIdxs = []int32{
-	0, // 0: auth.v1.AuthService.SendOtp:input_type -> auth.v1.SendOtpRequest
-	2, // 1: auth.v1.AuthService.VerifyOtp:input_type -> auth.v1.VerifyOtpRequest
-	1, // 2: auth.v1.AuthService.SendOtp:output_type -> auth.v1.SendOtpResponse
-	3, // 3: auth.v1.AuthService.VerifyOtp:output_type -> auth.v1.VerifyOtpResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0, // 0: auth.v1.SendOtpRequest.identifier_type:type_name -> auth.v1.IdentifierType
+	1, // 1: auth.v1.SendOtpResponse.error_code:type_name -> auth.v1.SendOtpResponse.ErrorCode
+	7, // 2: auth.v1.SendOtpResponse.otp_info:type_name -> auth.v1.SendOtpResponse.OtpInfo
+	0, // 3: auth.v1.VerifyOtpRequest.identifier_type:type_name -> auth.v1.IdentifierType
+	2, // 4: auth.v1.VerifyOtpResponse.error_code:type_name -> auth.v1.VerifyOtpResponse.ErrorCode
+	8, // 5: auth.v1.VerifyOtpResponse.tokens:type_name -> auth.v1.VerifyOtpResponse.AuthTokens
+	3, // 6: auth.v1.AuthService.SendOtp:input_type -> auth.v1.SendOtpRequest
+	5, // 7: auth.v1.AuthService.VerifyOtp:input_type -> auth.v1.VerifyOtpRequest
+	4, // 8: auth.v1.AuthService.SendOtp:output_type -> auth.v1.SendOtpResponse
+	6, // 9: auth.v1.AuthService.VerifyOtp:output_type -> auth.v1.VerifyOtpResponse
+	8, // [8:10] is the sub-list for method output_type
+	6, // [6:8] is the sub-list for method input_type
+	6, // [6:6] is the sub-list for extension type_name
+	6, // [6:6] is the sub-list for extension extendee
+	0, // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_auth_v1_auth_proto_init() }
@@ -295,13 +632,14 @@ func file_auth_v1_auth_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_v1_auth_proto_rawDesc), len(file_auth_v1_auth_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   4,
+			NumEnums:      3,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_auth_v1_auth_proto_goTypes,
 		DependencyIndexes: file_auth_v1_auth_proto_depIdxs,
+		EnumInfos:         file_auth_v1_auth_proto_enumTypes,
 		MessageInfos:      file_auth_v1_auth_proto_msgTypes,
 	}.Build()
 	File_auth_v1_auth_proto = out.File
