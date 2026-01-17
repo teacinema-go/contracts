@@ -177,6 +177,61 @@ func (VerifyOtpResponse_ErrorCode) EnumDescriptor() ([]byte, []int) {
 	return file_auth_v1_auth_proto_rawDescGZIP(), []int{3, 0}
 }
 
+type RefreshResponse_ErrorCode int32
+
+const (
+	RefreshResponse_ERROR_CODE_UNSPECIFIED RefreshResponse_ErrorCode = 0
+	RefreshResponse_INTERNAL_ERROR         RefreshResponse_ErrorCode = 1
+	RefreshResponse_ACCOUNT_NOT_FOUND      RefreshResponse_ErrorCode = 2
+	RefreshResponse_INVALID_REFRESH_TOKEN  RefreshResponse_ErrorCode = 3
+	RefreshResponse_EXPIRED_REFRESH_TOKEN  RefreshResponse_ErrorCode = 4
+)
+
+// Enum value maps for RefreshResponse_ErrorCode.
+var (
+	RefreshResponse_ErrorCode_name = map[int32]string{
+		0: "ERROR_CODE_UNSPECIFIED",
+		1: "INTERNAL_ERROR",
+		2: "ACCOUNT_NOT_FOUND",
+		3: "INVALID_REFRESH_TOKEN",
+		4: "EXPIRED_REFRESH_TOKEN",
+	}
+	RefreshResponse_ErrorCode_value = map[string]int32{
+		"ERROR_CODE_UNSPECIFIED": 0,
+		"INTERNAL_ERROR":         1,
+		"ACCOUNT_NOT_FOUND":      2,
+		"INVALID_REFRESH_TOKEN":  3,
+		"EXPIRED_REFRESH_TOKEN":  4,
+	}
+)
+
+func (x RefreshResponse_ErrorCode) Enum() *RefreshResponse_ErrorCode {
+	p := new(RefreshResponse_ErrorCode)
+	*p = x
+	return p
+}
+
+func (x RefreshResponse_ErrorCode) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (RefreshResponse_ErrorCode) Descriptor() protoreflect.EnumDescriptor {
+	return file_auth_v1_auth_proto_enumTypes[3].Descriptor()
+}
+
+func (RefreshResponse_ErrorCode) Type() protoreflect.EnumType {
+	return &file_auth_v1_auth_proto_enumTypes[3]
+}
+
+func (x RefreshResponse_ErrorCode) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use RefreshResponse_ErrorCode.Descriptor instead.
+func (RefreshResponse_ErrorCode) EnumDescriptor() ([]byte, []int) {
+	return file_auth_v1_auth_proto_rawDescGZIP(), []int{5, 0}
+}
+
 type SendOtpRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	Identifier     string                 `protobuf:"bytes,1,opt,name=identifier,proto3" json:"identifier,omitempty"`
@@ -425,16 +480,128 @@ func (x *VerifyOtpResponse) GetTokens() *VerifyOtpResponse_AuthTokens {
 	return nil
 }
 
+type RefreshRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	RefreshToken  string                 `protobuf:"bytes,1,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RefreshRequest) Reset() {
+	*x = RefreshRequest{}
+	mi := &file_auth_v1_auth_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RefreshRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RefreshRequest) ProtoMessage() {}
+
+func (x *RefreshRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_v1_auth_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RefreshRequest.ProtoReflect.Descriptor instead.
+func (*RefreshRequest) Descriptor() ([]byte, []int) {
+	return file_auth_v1_auth_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *RefreshRequest) GetRefreshToken() string {
+	if x != nil {
+		return x.RefreshToken
+	}
+	return ""
+}
+
+type RefreshResponse struct {
+	state         protoimpl.MessageState      `protogen:"open.v1"`
+	Success       bool                        `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	ErrorCode     RefreshResponse_ErrorCode   `protobuf:"varint,2,opt,name=error_code,json=errorCode,proto3,enum=auth.v1.RefreshResponse_ErrorCode" json:"error_code,omitempty"`
+	ErrorMessage  string                      `protobuf:"bytes,3,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
+	Tokens        *RefreshResponse_AuthTokens `protobuf:"bytes,4,opt,name=tokens,proto3" json:"tokens,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RefreshResponse) Reset() {
+	*x = RefreshResponse{}
+	mi := &file_auth_v1_auth_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RefreshResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RefreshResponse) ProtoMessage() {}
+
+func (x *RefreshResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_v1_auth_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RefreshResponse.ProtoReflect.Descriptor instead.
+func (*RefreshResponse) Descriptor() ([]byte, []int) {
+	return file_auth_v1_auth_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *RefreshResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+func (x *RefreshResponse) GetErrorCode() RefreshResponse_ErrorCode {
+	if x != nil {
+		return x.ErrorCode
+	}
+	return RefreshResponse_ERROR_CODE_UNSPECIFIED
+}
+
+func (x *RefreshResponse) GetErrorMessage() string {
+	if x != nil {
+		return x.ErrorMessage
+	}
+	return ""
+}
+
+func (x *RefreshResponse) GetTokens() *RefreshResponse_AuthTokens {
+	if x != nil {
+		return x.Tokens
+	}
+	return nil
+}
+
 type SendOtpResponse_OtpInfo struct {
 	state            protoimpl.MessageState `protogen:"open.v1"`
-	ExpiresInSeconds int32                  `protobuf:"varint,1,opt,name=expires_in_seconds,json=expiresInSeconds,proto3" json:"expires_in_seconds,omitempty"` // -1 for infinity
+	ExpiresInSeconds int32                  `protobuf:"varint,1,opt,name=expires_in_seconds,json=expiresInSeconds,proto3" json:"expires_in_seconds,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
 
 func (x *SendOtpResponse_OtpInfo) Reset() {
 	*x = SendOtpResponse_OtpInfo{}
-	mi := &file_auth_v1_auth_proto_msgTypes[4]
+	mi := &file_auth_v1_auth_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -446,7 +613,7 @@ func (x *SendOtpResponse_OtpInfo) String() string {
 func (*SendOtpResponse_OtpInfo) ProtoMessage() {}
 
 func (x *SendOtpResponse_OtpInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_v1_auth_proto_msgTypes[4]
+	mi := &file_auth_v1_auth_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -473,14 +640,14 @@ type VerifyOtpResponse_AuthTokens struct {
 	state            protoimpl.MessageState `protogen:"open.v1"`
 	AccessToken      string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
 	RefreshToken     string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
-	ExpiresInSeconds int32                  `protobuf:"varint,3,opt,name=expires_in_seconds,json=expiresInSeconds,proto3" json:"expires_in_seconds,omitempty"` // access_token, -1 for infinity
+	ExpiresInSeconds int32                  `protobuf:"varint,3,opt,name=expires_in_seconds,json=expiresInSeconds,proto3" json:"expires_in_seconds,omitempty"` // access_token
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
 
 func (x *VerifyOtpResponse_AuthTokens) Reset() {
 	*x = VerifyOtpResponse_AuthTokens{}
-	mi := &file_auth_v1_auth_proto_msgTypes[5]
+	mi := &file_auth_v1_auth_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -492,7 +659,7 @@ func (x *VerifyOtpResponse_AuthTokens) String() string {
 func (*VerifyOtpResponse_AuthTokens) ProtoMessage() {}
 
 func (x *VerifyOtpResponse_AuthTokens) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_v1_auth_proto_msgTypes[5]
+	mi := &file_auth_v1_auth_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -523,6 +690,66 @@ func (x *VerifyOtpResponse_AuthTokens) GetRefreshToken() string {
 }
 
 func (x *VerifyOtpResponse_AuthTokens) GetExpiresInSeconds() int32 {
+	if x != nil {
+		return x.ExpiresInSeconds
+	}
+	return 0
+}
+
+type RefreshResponse_AuthTokens struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	AccessToken      string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	RefreshToken     string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	ExpiresInSeconds int32                  `protobuf:"varint,3,opt,name=expires_in_seconds,json=expiresInSeconds,proto3" json:"expires_in_seconds,omitempty"` // access_token
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *RefreshResponse_AuthTokens) Reset() {
+	*x = RefreshResponse_AuthTokens{}
+	mi := &file_auth_v1_auth_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RefreshResponse_AuthTokens) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RefreshResponse_AuthTokens) ProtoMessage() {}
+
+func (x *RefreshResponse_AuthTokens) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_v1_auth_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RefreshResponse_AuthTokens.ProtoReflect.Descriptor instead.
+func (*RefreshResponse_AuthTokens) Descriptor() ([]byte, []int) {
+	return file_auth_v1_auth_proto_rawDescGZIP(), []int{5, 0}
+}
+
+func (x *RefreshResponse_AuthTokens) GetAccessToken() string {
+	if x != nil {
+		return x.AccessToken
+	}
+	return ""
+}
+
+func (x *RefreshResponse_AuthTokens) GetRefreshToken() string {
+	if x != nil {
+		return x.RefreshToken
+	}
+	return ""
+}
+
+func (x *RefreshResponse_AuthTokens) GetExpiresInSeconds() int32 {
 	if x != nil {
 		return x.ExpiresInSeconds
 	}
@@ -574,14 +801,34 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\x17INVALID_IDENTIFIER_TYPE\x10\x02\x12\x0f\n" +
 	"\vINVALID_OTP\x10\x03\x12\x0f\n" +
 	"\vEXPIRED_OTP\x10\x04\x12\x15\n" +
-	"\x11ACCOUNT_NOT_FOUND\x10\x05*G\n" +
+	"\x11ACCOUNT_NOT_FOUND\x10\x05\"5\n" +
+	"\x0eRefreshRequest\x12#\n" +
+	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"\xe0\x03\n" +
+	"\x0fRefreshResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\x12A\n" +
+	"\n" +
+	"error_code\x18\x02 \x01(\x0e2\".auth.v1.RefreshResponse.ErrorCodeR\terrorCode\x12#\n" +
+	"\rerror_message\x18\x03 \x01(\tR\ferrorMessage\x12;\n" +
+	"\x06tokens\x18\x04 \x01(\v2#.auth.v1.RefreshResponse.AuthTokensR\x06tokens\x1a\x82\x01\n" +
+	"\n" +
+	"AuthTokens\x12!\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\x12,\n" +
+	"\x12expires_in_seconds\x18\x03 \x01(\x05R\x10expiresInSeconds\"\x88\x01\n" +
+	"\tErrorCode\x12\x1a\n" +
+	"\x16ERROR_CODE_UNSPECIFIED\x10\x00\x12\x12\n" +
+	"\x0eINTERNAL_ERROR\x10\x01\x12\x15\n" +
+	"\x11ACCOUNT_NOT_FOUND\x10\x02\x12\x19\n" +
+	"\x15INVALID_REFRESH_TOKEN\x10\x03\x12\x19\n" +
+	"\x15EXPIRED_REFRESH_TOKEN\x10\x04*G\n" +
 	"\x0eIdentifierType\x12\x1f\n" +
 	"\x1bIDENTIFIER_TYPE_UNSPECIFIED\x10\x00\x12\t\n" +
 	"\x05PHONE\x10\x01\x12\t\n" +
-	"\x05EMAIL\x10\x022\x8f\x01\n" +
+	"\x05EMAIL\x10\x022\xcd\x01\n" +
 	"\vAuthService\x12<\n" +
 	"\aSendOtp\x12\x17.auth.v1.SendOtpRequest\x1a\x18.auth.v1.SendOtpResponse\x12B\n" +
-	"\tVerifyOtp\x12\x19.auth.v1.VerifyOtpRequest\x1a\x1a.auth.v1.VerifyOtpResponseB9Z7github.com/teacinema-go/contracts/gen/go/auth/v1;authv1b\x06proto3"
+	"\tVerifyOtp\x12\x19.auth.v1.VerifyOtpRequest\x1a\x1a.auth.v1.VerifyOtpResponse\x12<\n" +
+	"\aRefresh\x12\x17.auth.v1.RefreshRequest\x1a\x18.auth.v1.RefreshResponseB9Z7github.com/teacinema-go/contracts/gen/go/auth/v1;authv1b\x06proto3"
 
 var (
 	file_auth_v1_auth_proto_rawDescOnce sync.Once
@@ -595,35 +842,43 @@ func file_auth_v1_auth_proto_rawDescGZIP() []byte {
 	return file_auth_v1_auth_proto_rawDescData
 }
 
-var file_auth_v1_auth_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_auth_v1_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_auth_v1_auth_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
+var file_auth_v1_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_auth_v1_auth_proto_goTypes = []any{
 	(IdentifierType)(0),                  // 0: auth.v1.IdentifierType
 	(SendOtpResponse_ErrorCode)(0),       // 1: auth.v1.SendOtpResponse.ErrorCode
 	(VerifyOtpResponse_ErrorCode)(0),     // 2: auth.v1.VerifyOtpResponse.ErrorCode
-	(*SendOtpRequest)(nil),               // 3: auth.v1.SendOtpRequest
-	(*SendOtpResponse)(nil),              // 4: auth.v1.SendOtpResponse
-	(*VerifyOtpRequest)(nil),             // 5: auth.v1.VerifyOtpRequest
-	(*VerifyOtpResponse)(nil),            // 6: auth.v1.VerifyOtpResponse
-	(*SendOtpResponse_OtpInfo)(nil),      // 7: auth.v1.SendOtpResponse.OtpInfo
-	(*VerifyOtpResponse_AuthTokens)(nil), // 8: auth.v1.VerifyOtpResponse.AuthTokens
+	(RefreshResponse_ErrorCode)(0),       // 3: auth.v1.RefreshResponse.ErrorCode
+	(*SendOtpRequest)(nil),               // 4: auth.v1.SendOtpRequest
+	(*SendOtpResponse)(nil),              // 5: auth.v1.SendOtpResponse
+	(*VerifyOtpRequest)(nil),             // 6: auth.v1.VerifyOtpRequest
+	(*VerifyOtpResponse)(nil),            // 7: auth.v1.VerifyOtpResponse
+	(*RefreshRequest)(nil),               // 8: auth.v1.RefreshRequest
+	(*RefreshResponse)(nil),              // 9: auth.v1.RefreshResponse
+	(*SendOtpResponse_OtpInfo)(nil),      // 10: auth.v1.SendOtpResponse.OtpInfo
+	(*VerifyOtpResponse_AuthTokens)(nil), // 11: auth.v1.VerifyOtpResponse.AuthTokens
+	(*RefreshResponse_AuthTokens)(nil),   // 12: auth.v1.RefreshResponse.AuthTokens
 }
 var file_auth_v1_auth_proto_depIdxs = []int32{
-	0, // 0: auth.v1.SendOtpRequest.identifier_type:type_name -> auth.v1.IdentifierType
-	1, // 1: auth.v1.SendOtpResponse.error_code:type_name -> auth.v1.SendOtpResponse.ErrorCode
-	7, // 2: auth.v1.SendOtpResponse.otp_info:type_name -> auth.v1.SendOtpResponse.OtpInfo
-	0, // 3: auth.v1.VerifyOtpRequest.identifier_type:type_name -> auth.v1.IdentifierType
-	2, // 4: auth.v1.VerifyOtpResponse.error_code:type_name -> auth.v1.VerifyOtpResponse.ErrorCode
-	8, // 5: auth.v1.VerifyOtpResponse.tokens:type_name -> auth.v1.VerifyOtpResponse.AuthTokens
-	3, // 6: auth.v1.AuthService.SendOtp:input_type -> auth.v1.SendOtpRequest
-	5, // 7: auth.v1.AuthService.VerifyOtp:input_type -> auth.v1.VerifyOtpRequest
-	4, // 8: auth.v1.AuthService.SendOtp:output_type -> auth.v1.SendOtpResponse
-	6, // 9: auth.v1.AuthService.VerifyOtp:output_type -> auth.v1.VerifyOtpResponse
-	8, // [8:10] is the sub-list for method output_type
-	6, // [6:8] is the sub-list for method input_type
-	6, // [6:6] is the sub-list for extension type_name
-	6, // [6:6] is the sub-list for extension extendee
-	0, // [0:6] is the sub-list for field type_name
+	0,  // 0: auth.v1.SendOtpRequest.identifier_type:type_name -> auth.v1.IdentifierType
+	1,  // 1: auth.v1.SendOtpResponse.error_code:type_name -> auth.v1.SendOtpResponse.ErrorCode
+	10, // 2: auth.v1.SendOtpResponse.otp_info:type_name -> auth.v1.SendOtpResponse.OtpInfo
+	0,  // 3: auth.v1.VerifyOtpRequest.identifier_type:type_name -> auth.v1.IdentifierType
+	2,  // 4: auth.v1.VerifyOtpResponse.error_code:type_name -> auth.v1.VerifyOtpResponse.ErrorCode
+	11, // 5: auth.v1.VerifyOtpResponse.tokens:type_name -> auth.v1.VerifyOtpResponse.AuthTokens
+	3,  // 6: auth.v1.RefreshResponse.error_code:type_name -> auth.v1.RefreshResponse.ErrorCode
+	12, // 7: auth.v1.RefreshResponse.tokens:type_name -> auth.v1.RefreshResponse.AuthTokens
+	4,  // 8: auth.v1.AuthService.SendOtp:input_type -> auth.v1.SendOtpRequest
+	6,  // 9: auth.v1.AuthService.VerifyOtp:input_type -> auth.v1.VerifyOtpRequest
+	8,  // 10: auth.v1.AuthService.Refresh:input_type -> auth.v1.RefreshRequest
+	5,  // 11: auth.v1.AuthService.SendOtp:output_type -> auth.v1.SendOtpResponse
+	7,  // 12: auth.v1.AuthService.VerifyOtp:output_type -> auth.v1.VerifyOtpResponse
+	9,  // 13: auth.v1.AuthService.Refresh:output_type -> auth.v1.RefreshResponse
+	11, // [11:14] is the sub-list for method output_type
+	8,  // [8:11] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_auth_v1_auth_proto_init() }
@@ -636,8 +891,8 @@ func file_auth_v1_auth_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_v1_auth_proto_rawDesc), len(file_auth_v1_auth_proto_rawDesc)),
-			NumEnums:      3,
-			NumMessages:   6,
+			NumEnums:      4,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

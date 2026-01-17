@@ -7,6 +7,7 @@ option go_package = "github.com/teacinema-go/contracts/gen/go/auth/v1;authv1";
 service AuthService{
   rpc SendOtp (SendOtpRequest) returns (SendOtpResponse);
   rpc VerifyOtp (VerifyOtpRequest) returns (VerifyOtpResponse);
+  rpc Refresh (RefreshRequest) returns (RefreshResponse);
 }
 
 message SendOtpRequest{
@@ -21,7 +22,7 @@ message SendOtpResponse {
   OtpInfo otp_info = 4;
 
   message OtpInfo {
-    int32 expires_in_seconds = 1; // -1 for infinity
+    int32 expires_in_seconds = 1;
   }
 
   enum ErrorCode {
@@ -47,7 +48,7 @@ message VerifyOtpResponse{
   message AuthTokens {
     string access_token = 1;
     string refresh_token = 2;
-    int32 expires_in_seconds = 3; // access_token, -1 for infinity
+    int32 expires_in_seconds = 3; // access_token
   }
 
   enum ErrorCode {
@@ -57,6 +58,31 @@ message VerifyOtpResponse{
     INVALID_OTP = 3;
     EXPIRED_OTP = 4;
     ACCOUNT_NOT_FOUND = 5;
+  }
+}
+
+message RefreshRequest{
+  string refresh_token = 1;
+}
+
+message RefreshResponse{
+  bool success = 1;
+  ErrorCode error_code = 2;
+  string error_message = 3;
+  AuthTokens tokens = 4;
+
+  message AuthTokens {
+    string access_token = 1;
+    string refresh_token = 2;
+    int32 expires_in_seconds = 3; // access_token
+  }
+
+  enum ErrorCode {
+    ERROR_CODE_UNSPECIFIED = 0;
+    INTERNAL_ERROR = 1;
+    ACCOUNT_NOT_FOUND = 2;
+    INVALID_REFRESH_TOKEN = 3;
+    EXPIRED_REFRESH_TOKEN = 4;
   }
 }
 
