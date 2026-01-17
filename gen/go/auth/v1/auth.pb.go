@@ -76,6 +76,7 @@ const (
 	SendOtpResponse_ERROR_CODE_UNSPECIFIED  SendOtpResponse_ErrorCode = 0
 	SendOtpResponse_INTERNAL_ERROR          SendOtpResponse_ErrorCode = 1
 	SendOtpResponse_INVALID_IDENTIFIER_TYPE SendOtpResponse_ErrorCode = 2
+	SendOtpResponse_INVALID_IDENTIFIER      SendOtpResponse_ErrorCode = 3
 )
 
 // Enum value maps for SendOtpResponse_ErrorCode.
@@ -84,11 +85,13 @@ var (
 		0: "ERROR_CODE_UNSPECIFIED",
 		1: "INTERNAL_ERROR",
 		2: "INVALID_IDENTIFIER_TYPE",
+		3: "INVALID_IDENTIFIER",
 	}
 	SendOtpResponse_ErrorCode_value = map[string]int32{
 		"ERROR_CODE_UNSPECIFIED":  0,
 		"INTERNAL_ERROR":          1,
 		"INVALID_IDENTIFIER_TYPE": 2,
+		"INVALID_IDENTIFIER":      3,
 	}
 )
 
@@ -125,9 +128,10 @@ const (
 	VerifyOtpResponse_ERROR_CODE_UNSPECIFIED  VerifyOtpResponse_ErrorCode = 0
 	VerifyOtpResponse_INTERNAL_ERROR          VerifyOtpResponse_ErrorCode = 1
 	VerifyOtpResponse_INVALID_IDENTIFIER_TYPE VerifyOtpResponse_ErrorCode = 2
-	VerifyOtpResponse_INVALID_OTP             VerifyOtpResponse_ErrorCode = 3
-	VerifyOtpResponse_EXPIRED_OTP             VerifyOtpResponse_ErrorCode = 4
-	VerifyOtpResponse_ACCOUNT_NOT_FOUND       VerifyOtpResponse_ErrorCode = 5
+	VerifyOtpResponse_INVALID_IDENTIFIER      VerifyOtpResponse_ErrorCode = 3
+	VerifyOtpResponse_INVALID_OTP             VerifyOtpResponse_ErrorCode = 4
+	VerifyOtpResponse_EXPIRED_OTP             VerifyOtpResponse_ErrorCode = 5
+	VerifyOtpResponse_ACCOUNT_NOT_FOUND       VerifyOtpResponse_ErrorCode = 6
 )
 
 // Enum value maps for VerifyOtpResponse_ErrorCode.
@@ -136,17 +140,19 @@ var (
 		0: "ERROR_CODE_UNSPECIFIED",
 		1: "INTERNAL_ERROR",
 		2: "INVALID_IDENTIFIER_TYPE",
-		3: "INVALID_OTP",
-		4: "EXPIRED_OTP",
-		5: "ACCOUNT_NOT_FOUND",
+		3: "INVALID_IDENTIFIER",
+		4: "INVALID_OTP",
+		5: "EXPIRED_OTP",
+		6: "ACCOUNT_NOT_FOUND",
 	}
 	VerifyOtpResponse_ErrorCode_value = map[string]int32{
 		"ERROR_CODE_UNSPECIFIED":  0,
 		"INTERNAL_ERROR":          1,
 		"INVALID_IDENTIFIER_TYPE": 2,
-		"INVALID_OTP":             3,
-		"EXPIRED_OTP":             4,
-		"ACCOUNT_NOT_FOUND":       5,
+		"INVALID_IDENTIFIER":      3,
+		"INVALID_OTP":             4,
+		"EXPIRED_OTP":             5,
+		"ACCOUNT_NOT_FOUND":       6,
 	}
 )
 
@@ -765,7 +771,7 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\n" +
 	"identifier\x18\x01 \x01(\tR\n" +
 	"identifier\x12@\n" +
-	"\x0fidentifier_type\x18\x02 \x01(\x0e2\x17.auth.v1.IdentifierTypeR\x0eidentifierType\"\xe3\x02\n" +
+	"\x0fidentifier_type\x18\x02 \x01(\x0e2\x17.auth.v1.IdentifierTypeR\x0eidentifierType\"\xfb\x02\n" +
 	"\x0fSendOtpResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12A\n" +
 	"\n" +
@@ -773,17 +779,18 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\rerror_message\x18\x03 \x01(\tR\ferrorMessage\x12;\n" +
 	"\botp_info\x18\x04 \x01(\v2 .auth.v1.SendOtpResponse.OtpInfoR\aotpInfo\x1a7\n" +
 	"\aOtpInfo\x12,\n" +
-	"\x12expires_in_seconds\x18\x01 \x01(\x05R\x10expiresInSeconds\"X\n" +
+	"\x12expires_in_seconds\x18\x01 \x01(\x05R\x10expiresInSeconds\"p\n" +
 	"\tErrorCode\x12\x1a\n" +
 	"\x16ERROR_CODE_UNSPECIFIED\x10\x00\x12\x12\n" +
 	"\x0eINTERNAL_ERROR\x10\x01\x12\x1b\n" +
-	"\x17INVALID_IDENTIFIER_TYPE\x10\x02\"\x86\x01\n" +
+	"\x17INVALID_IDENTIFIER_TYPE\x10\x02\x12\x16\n" +
+	"\x12INVALID_IDENTIFIER\x10\x03\"\x86\x01\n" +
 	"\x10VerifyOtpRequest\x12\x1e\n" +
 	"\n" +
 	"identifier\x18\x01 \x01(\tR\n" +
 	"identifier\x12@\n" +
 	"\x0fidentifier_type\x18\x02 \x01(\x0e2\x17.auth.v1.IdentifierTypeR\x0eidentifierType\x12\x10\n" +
-	"\x03otp\x18\x03 \x01(\tR\x03otp\"\xef\x03\n" +
+	"\x03otp\x18\x03 \x01(\tR\x03otp\"\x87\x04\n" +
 	"\x11VerifyOtpResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12C\n" +
 	"\n" +
@@ -794,14 +801,15 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"AuthTokens\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
 	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\x12,\n" +
-	"\x12expires_in_seconds\x18\x03 \x01(\x05R\x10expiresInSeconds\"\x91\x01\n" +
+	"\x12expires_in_seconds\x18\x03 \x01(\x05R\x10expiresInSeconds\"\xa9\x01\n" +
 	"\tErrorCode\x12\x1a\n" +
 	"\x16ERROR_CODE_UNSPECIFIED\x10\x00\x12\x12\n" +
 	"\x0eINTERNAL_ERROR\x10\x01\x12\x1b\n" +
-	"\x17INVALID_IDENTIFIER_TYPE\x10\x02\x12\x0f\n" +
-	"\vINVALID_OTP\x10\x03\x12\x0f\n" +
-	"\vEXPIRED_OTP\x10\x04\x12\x15\n" +
-	"\x11ACCOUNT_NOT_FOUND\x10\x05\"5\n" +
+	"\x17INVALID_IDENTIFIER_TYPE\x10\x02\x12\x16\n" +
+	"\x12INVALID_IDENTIFIER\x10\x03\x12\x0f\n" +
+	"\vINVALID_OTP\x10\x04\x12\x0f\n" +
+	"\vEXPIRED_OTP\x10\x05\x12\x15\n" +
+	"\x11ACCOUNT_NOT_FOUND\x10\x06\"5\n" +
 	"\x0eRefreshRequest\x12#\n" +
 	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"\xe0\x03\n" +
 	"\x0fRefreshResponse\x12\x18\n" +
