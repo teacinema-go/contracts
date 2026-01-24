@@ -4,11 +4,13 @@ package account.v1;
 
 option go_package = "github.com/teacinema-go/contracts/gen/go/account/v1;accountv1";
 
-service AccountService{
+import "google/protobuf/timestamp.proto";
+
+service AccountService {
   rpc GetAccount (GetAccountRequest) returns (GetAccountResponse);
 }
 
-message GetAccountRequest{
+message GetAccountRequest {
   string id = 1;
 }
 
@@ -29,12 +31,12 @@ message Account {
   string id = 1;
   string phone = 2;
   string email = 3;
-  bool is_phone_verified = 4;
-  bool is_email_verified = 5;
-  Role role = 6;
+  Role role = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
 }
 
-enum Role{
+enum Role {
   USER = 0;
   ADMIN = 1;
 }

@@ -9,6 +9,7 @@ package accountv1
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -229,15 +230,15 @@ func (x *GetAccountResponse) GetAccount() *Account {
 }
 
 type Account struct {
-	state           protoimpl.MessageState `protogen:"open.v1"`
-	Id              string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Phone           string                 `protobuf:"bytes,2,opt,name=phone,proto3" json:"phone,omitempty"`
-	Email           string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
-	IsPhoneVerified bool                   `protobuf:"varint,4,opt,name=is_phone_verified,json=isPhoneVerified,proto3" json:"is_phone_verified,omitempty"`
-	IsEmailVerified bool                   `protobuf:"varint,5,opt,name=is_email_verified,json=isEmailVerified,proto3" json:"is_email_verified,omitempty"`
-	Role            Role                   `protobuf:"varint,6,opt,name=role,proto3,enum=account.v1.Role" json:"role,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Phone         string                 `protobuf:"bytes,2,opt,name=phone,proto3" json:"phone,omitempty"`
+	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+	Role          Role                   `protobuf:"varint,4,opt,name=role,proto3,enum=account.v1.Role" json:"role,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Account) Reset() {
@@ -291,20 +292,6 @@ func (x *Account) GetEmail() string {
 	return ""
 }
 
-func (x *Account) GetIsPhoneVerified() bool {
-	if x != nil {
-		return x.IsPhoneVerified
-	}
-	return false
-}
-
-func (x *Account) GetIsEmailVerified() bool {
-	if x != nil {
-		return x.IsEmailVerified
-	}
-	return false
-}
-
 func (x *Account) GetRole() Role {
 	if x != nil {
 		return x.Role
@@ -312,12 +299,26 @@ func (x *Account) GetRole() Role {
 	return Role_USER
 }
 
+func (x *Account) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *Account) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
 var File_account_v1_account_proto protoreflect.FileDescriptor
 
 const file_account_v1_account_proto_rawDesc = "" +
 	"\n" +
 	"\x18account/v1/account.proto\x12\n" +
-	"account.v1\"#\n" +
+	"account.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"#\n" +
 	"\x11GetAccountRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"\x93\x02\n" +
 	"\x12GetAccountResponse\x12\x18\n" +
@@ -330,14 +331,16 @@ const file_account_v1_account_proto_rawDesc = "" +
 	"\x0eINTERNAL_ERROR\x10\x00\x12\x15\n" +
 	"\x11ACCOUNT_NOT_FOUND\x10\x01\x12\x0e\n" +
 	"\n" +
-	"INVALID_ID\x10\x02\"\xc3\x01\n" +
+	"INVALID_ID\x10\x02\"\xe1\x01\n" +
 	"\aAccount\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05phone\x18\x02 \x01(\tR\x05phone\x12\x14\n" +
-	"\x05email\x18\x03 \x01(\tR\x05email\x12*\n" +
-	"\x11is_phone_verified\x18\x04 \x01(\bR\x0fisPhoneVerified\x12*\n" +
-	"\x11is_email_verified\x18\x05 \x01(\bR\x0fisEmailVerified\x12$\n" +
-	"\x04role\x18\x06 \x01(\x0e2\x10.account.v1.RoleR\x04role*\x1b\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email\x12$\n" +
+	"\x04role\x18\x04 \x01(\x0e2\x10.account.v1.RoleR\x04role\x129\n" +
+	"\n" +
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt*\x1b\n" +
 	"\x04Role\x12\b\n" +
 	"\x04USER\x10\x00\x12\t\n" +
 	"\x05ADMIN\x10\x012]\n" +
@@ -365,18 +368,21 @@ var file_account_v1_account_proto_goTypes = []any{
 	(*GetAccountRequest)(nil),         // 2: account.v1.GetAccountRequest
 	(*GetAccountResponse)(nil),        // 3: account.v1.GetAccountResponse
 	(*Account)(nil),                   // 4: account.v1.Account
+	(*timestamppb.Timestamp)(nil),     // 5: google.protobuf.Timestamp
 }
 var file_account_v1_account_proto_depIdxs = []int32{
 	1, // 0: account.v1.GetAccountResponse.error_code:type_name -> account.v1.GetAccountResponse.ErrorCode
 	4, // 1: account.v1.GetAccountResponse.account:type_name -> account.v1.Account
 	0, // 2: account.v1.Account.role:type_name -> account.v1.Role
-	2, // 3: account.v1.AccountService.GetAccount:input_type -> account.v1.GetAccountRequest
-	3, // 4: account.v1.AccountService.GetAccount:output_type -> account.v1.GetAccountResponse
-	4, // [4:5] is the sub-list for method output_type
-	3, // [3:4] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	5, // 3: account.v1.Account.created_at:type_name -> google.protobuf.Timestamp
+	5, // 4: account.v1.Account.updated_at:type_name -> google.protobuf.Timestamp
+	2, // 5: account.v1.AccountService.GetAccount:input_type -> account.v1.GetAccountRequest
+	3, // 6: account.v1.AccountService.GetAccount:output_type -> account.v1.GetAccountResponse
+	6, // [6:7] is the sub-list for method output_type
+	5, // [5:6] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_account_v1_account_proto_init() }
