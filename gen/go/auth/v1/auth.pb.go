@@ -73,25 +73,22 @@ func (IdentifierType) EnumDescriptor() ([]byte, []int) {
 type SendOtpResponse_ErrorCode int32
 
 const (
-	SendOtpResponse_ERROR_CODE_UNSPECIFIED  SendOtpResponse_ErrorCode = 0
-	SendOtpResponse_INTERNAL_ERROR          SendOtpResponse_ErrorCode = 1
-	SendOtpResponse_INVALID_IDENTIFIER_TYPE SendOtpResponse_ErrorCode = 2
-	SendOtpResponse_INVALID_IDENTIFIER      SendOtpResponse_ErrorCode = 3
+	SendOtpResponse_INTERNAL_ERROR          SendOtpResponse_ErrorCode = 0
+	SendOtpResponse_INVALID_IDENTIFIER_TYPE SendOtpResponse_ErrorCode = 1
+	SendOtpResponse_INVALID_IDENTIFIER      SendOtpResponse_ErrorCode = 2
 )
 
 // Enum value maps for SendOtpResponse_ErrorCode.
 var (
 	SendOtpResponse_ErrorCode_name = map[int32]string{
-		0: "ERROR_CODE_UNSPECIFIED",
-		1: "INTERNAL_ERROR",
-		2: "INVALID_IDENTIFIER_TYPE",
-		3: "INVALID_IDENTIFIER",
+		0: "INTERNAL_ERROR",
+		1: "INVALID_IDENTIFIER_TYPE",
+		2: "INVALID_IDENTIFIER",
 	}
 	SendOtpResponse_ErrorCode_value = map[string]int32{
-		"ERROR_CODE_UNSPECIFIED":  0,
-		"INTERNAL_ERROR":          1,
-		"INVALID_IDENTIFIER_TYPE": 2,
-		"INVALID_IDENTIFIER":      3,
+		"INTERNAL_ERROR":          0,
+		"INVALID_IDENTIFIER_TYPE": 1,
+		"INVALID_IDENTIFIER":      2,
 	}
 )
 
@@ -125,34 +122,28 @@ func (SendOtpResponse_ErrorCode) EnumDescriptor() ([]byte, []int) {
 type VerifyOtpResponse_ErrorCode int32
 
 const (
-	VerifyOtpResponse_ERROR_CODE_UNSPECIFIED  VerifyOtpResponse_ErrorCode = 0
-	VerifyOtpResponse_INTERNAL_ERROR          VerifyOtpResponse_ErrorCode = 1
-	VerifyOtpResponse_INVALID_IDENTIFIER_TYPE VerifyOtpResponse_ErrorCode = 2
-	VerifyOtpResponse_INVALID_IDENTIFIER      VerifyOtpResponse_ErrorCode = 3
-	VerifyOtpResponse_INVALID_OTP             VerifyOtpResponse_ErrorCode = 4
-	VerifyOtpResponse_EXPIRED_OTP             VerifyOtpResponse_ErrorCode = 5
-	VerifyOtpResponse_ACCOUNT_NOT_FOUND       VerifyOtpResponse_ErrorCode = 6
+	VerifyOtpResponse_INTERNAL_ERROR          VerifyOtpResponse_ErrorCode = 0
+	VerifyOtpResponse_INVALID_IDENTIFIER_TYPE VerifyOtpResponse_ErrorCode = 1
+	VerifyOtpResponse_INVALID_IDENTIFIER      VerifyOtpResponse_ErrorCode = 2
+	VerifyOtpResponse_INVALID_OTP             VerifyOtpResponse_ErrorCode = 3
+	VerifyOtpResponse_EXPIRED_OTP             VerifyOtpResponse_ErrorCode = 4
 )
 
 // Enum value maps for VerifyOtpResponse_ErrorCode.
 var (
 	VerifyOtpResponse_ErrorCode_name = map[int32]string{
-		0: "ERROR_CODE_UNSPECIFIED",
-		1: "INTERNAL_ERROR",
-		2: "INVALID_IDENTIFIER_TYPE",
-		3: "INVALID_IDENTIFIER",
-		4: "INVALID_OTP",
-		5: "EXPIRED_OTP",
-		6: "ACCOUNT_NOT_FOUND",
+		0: "INTERNAL_ERROR",
+		1: "INVALID_IDENTIFIER_TYPE",
+		2: "INVALID_IDENTIFIER",
+		3: "INVALID_OTP",
+		4: "EXPIRED_OTP",
 	}
 	VerifyOtpResponse_ErrorCode_value = map[string]int32{
-		"ERROR_CODE_UNSPECIFIED":  0,
-		"INTERNAL_ERROR":          1,
-		"INVALID_IDENTIFIER_TYPE": 2,
-		"INVALID_IDENTIFIER":      3,
-		"INVALID_OTP":             4,
-		"EXPIRED_OTP":             5,
-		"ACCOUNT_NOT_FOUND":       6,
+		"INTERNAL_ERROR":          0,
+		"INVALID_IDENTIFIER_TYPE": 1,
+		"INVALID_IDENTIFIER":      2,
+		"INVALID_OTP":             3,
+		"EXPIRED_OTP":             4,
 	}
 )
 
@@ -186,28 +177,25 @@ func (VerifyOtpResponse_ErrorCode) EnumDescriptor() ([]byte, []int) {
 type RefreshResponse_ErrorCode int32
 
 const (
-	RefreshResponse_ERROR_CODE_UNSPECIFIED RefreshResponse_ErrorCode = 0
-	RefreshResponse_INTERNAL_ERROR         RefreshResponse_ErrorCode = 1
-	RefreshResponse_ACCOUNT_NOT_FOUND      RefreshResponse_ErrorCode = 2
-	RefreshResponse_INVALID_REFRESH_TOKEN  RefreshResponse_ErrorCode = 3
-	RefreshResponse_EXPIRED_REFRESH_TOKEN  RefreshResponse_ErrorCode = 4
+	RefreshResponse_INTERNAL_ERROR        RefreshResponse_ErrorCode = 0
+	RefreshResponse_ACCOUNT_NOT_FOUND     RefreshResponse_ErrorCode = 1
+	RefreshResponse_INVALID_REFRESH_TOKEN RefreshResponse_ErrorCode = 2
+	RefreshResponse_EXPIRED_REFRESH_TOKEN RefreshResponse_ErrorCode = 3
 )
 
 // Enum value maps for RefreshResponse_ErrorCode.
 var (
 	RefreshResponse_ErrorCode_name = map[int32]string{
-		0: "ERROR_CODE_UNSPECIFIED",
-		1: "INTERNAL_ERROR",
-		2: "ACCOUNT_NOT_FOUND",
-		3: "INVALID_REFRESH_TOKEN",
-		4: "EXPIRED_REFRESH_TOKEN",
+		0: "INTERNAL_ERROR",
+		1: "ACCOUNT_NOT_FOUND",
+		2: "INVALID_REFRESH_TOKEN",
+		3: "EXPIRED_REFRESH_TOKEN",
 	}
 	RefreshResponse_ErrorCode_value = map[string]int32{
-		"ERROR_CODE_UNSPECIFIED": 0,
-		"INTERNAL_ERROR":         1,
-		"ACCOUNT_NOT_FOUND":      2,
-		"INVALID_REFRESH_TOKEN":  3,
-		"EXPIRED_REFRESH_TOKEN":  4,
+		"INTERNAL_ERROR":        0,
+		"ACCOUNT_NOT_FOUND":     1,
+		"INVALID_REFRESH_TOKEN": 2,
+		"EXPIRED_REFRESH_TOKEN": 3,
 	}
 )
 
@@ -241,22 +229,19 @@ func (RefreshResponse_ErrorCode) EnumDescriptor() ([]byte, []int) {
 type LogoutResponse_ErrorCode int32
 
 const (
-	LogoutResponse_ERROR_CODE_UNSPECIFIED LogoutResponse_ErrorCode = 0
-	LogoutResponse_INTERNAL_ERROR         LogoutResponse_ErrorCode = 1
-	LogoutResponse_INVALID_REFRESH_TOKEN  LogoutResponse_ErrorCode = 2
+	LogoutResponse_INTERNAL_ERROR        LogoutResponse_ErrorCode = 0
+	LogoutResponse_INVALID_REFRESH_TOKEN LogoutResponse_ErrorCode = 1
 )
 
 // Enum value maps for LogoutResponse_ErrorCode.
 var (
 	LogoutResponse_ErrorCode_name = map[int32]string{
-		0: "ERROR_CODE_UNSPECIFIED",
-		1: "INTERNAL_ERROR",
-		2: "INVALID_REFRESH_TOKEN",
+		0: "INTERNAL_ERROR",
+		1: "INVALID_REFRESH_TOKEN",
 	}
 	LogoutResponse_ErrorCode_value = map[string]int32{
-		"ERROR_CODE_UNSPECIFIED": 0,
-		"INTERNAL_ERROR":         1,
-		"INVALID_REFRESH_TOKEN":  2,
+		"INTERNAL_ERROR":        0,
+		"INVALID_REFRESH_TOKEN": 1,
 	}
 )
 
@@ -390,7 +375,7 @@ func (x *SendOtpResponse) GetErrorCode() SendOtpResponse_ErrorCode {
 	if x != nil {
 		return x.ErrorCode
 	}
-	return SendOtpResponse_ERROR_CODE_UNSPECIFIED
+	return SendOtpResponse_INTERNAL_ERROR
 }
 
 func (x *SendOtpResponse) GetErrorMessage() string {
@@ -518,7 +503,7 @@ func (x *VerifyOtpResponse) GetErrorCode() VerifyOtpResponse_ErrorCode {
 	if x != nil {
 		return x.ErrorCode
 	}
-	return VerifyOtpResponse_ERROR_CODE_UNSPECIFIED
+	return VerifyOtpResponse_INTERNAL_ERROR
 }
 
 func (x *VerifyOtpResponse) GetErrorMessage() string {
@@ -630,7 +615,7 @@ func (x *RefreshResponse) GetErrorCode() RefreshResponse_ErrorCode {
 	if x != nil {
 		return x.ErrorCode
 	}
-	return RefreshResponse_ERROR_CODE_UNSPECIFIED
+	return RefreshResponse_INTERNAL_ERROR
 }
 
 func (x *RefreshResponse) GetErrorMessage() string {
@@ -741,7 +726,7 @@ func (x *LogoutResponse) GetErrorCode() LogoutResponse_ErrorCode {
 	if x != nil {
 		return x.ErrorCode
 	}
-	return LogoutResponse_ERROR_CODE_UNSPECIFIED
+	return LogoutResponse_INTERNAL_ERROR
 }
 
 func (x *LogoutResponse) GetErrorMessage() string {
@@ -924,7 +909,7 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\n" +
 	"identifier\x18\x01 \x01(\tR\n" +
 	"identifier\x12@\n" +
-	"\x0fidentifier_type\x18\x02 \x01(\x0e2\x17.auth.v1.IdentifierTypeR\x0eidentifierType\"\xfb\x02\n" +
+	"\x0fidentifier_type\x18\x02 \x01(\x0e2\x17.auth.v1.IdentifierTypeR\x0eidentifierType\"\xdf\x02\n" +
 	"\x0fSendOtpResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12A\n" +
 	"\n" +
@@ -932,18 +917,17 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\rerror_message\x18\x03 \x01(\tR\ferrorMessage\x12;\n" +
 	"\botp_info\x18\x04 \x01(\v2 .auth.v1.SendOtpResponse.OtpInfoR\aotpInfo\x1a7\n" +
 	"\aOtpInfo\x12,\n" +
-	"\x12expires_in_seconds\x18\x01 \x01(\x05R\x10expiresInSeconds\"p\n" +
-	"\tErrorCode\x12\x1a\n" +
-	"\x16ERROR_CODE_UNSPECIFIED\x10\x00\x12\x12\n" +
-	"\x0eINTERNAL_ERROR\x10\x01\x12\x1b\n" +
-	"\x17INVALID_IDENTIFIER_TYPE\x10\x02\x12\x16\n" +
-	"\x12INVALID_IDENTIFIER\x10\x03\"\x86\x01\n" +
+	"\x12expires_in_seconds\x18\x01 \x01(\x05R\x10expiresInSeconds\"T\n" +
+	"\tErrorCode\x12\x12\n" +
+	"\x0eINTERNAL_ERROR\x10\x00\x12\x1b\n" +
+	"\x17INVALID_IDENTIFIER_TYPE\x10\x01\x12\x16\n" +
+	"\x12INVALID_IDENTIFIER\x10\x02\"\x86\x01\n" +
 	"\x10VerifyOtpRequest\x12\x1e\n" +
 	"\n" +
 	"identifier\x18\x01 \x01(\tR\n" +
 	"identifier\x12@\n" +
 	"\x0fidentifier_type\x18\x02 \x01(\x0e2\x17.auth.v1.IdentifierTypeR\x0eidentifierType\x12\x10\n" +
-	"\x03otp\x18\x03 \x01(\tR\x03otp\"\x87\x04\n" +
+	"\x03otp\x18\x03 \x01(\tR\x03otp\"\xd3\x03\n" +
 	"\x11VerifyOtpResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12C\n" +
 	"\n" +
@@ -954,17 +938,15 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"AuthTokens\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
 	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\x12,\n" +
-	"\x12expires_in_seconds\x18\x03 \x01(\x05R\x10expiresInSeconds\"\xa9\x01\n" +
-	"\tErrorCode\x12\x1a\n" +
-	"\x16ERROR_CODE_UNSPECIFIED\x10\x00\x12\x12\n" +
-	"\x0eINTERNAL_ERROR\x10\x01\x12\x1b\n" +
-	"\x17INVALID_IDENTIFIER_TYPE\x10\x02\x12\x16\n" +
-	"\x12INVALID_IDENTIFIER\x10\x03\x12\x0f\n" +
-	"\vINVALID_OTP\x10\x04\x12\x0f\n" +
-	"\vEXPIRED_OTP\x10\x05\x12\x15\n" +
-	"\x11ACCOUNT_NOT_FOUND\x10\x06\"5\n" +
+	"\x12expires_in_seconds\x18\x03 \x01(\x05R\x10expiresInSeconds\"v\n" +
+	"\tErrorCode\x12\x12\n" +
+	"\x0eINTERNAL_ERROR\x10\x00\x12\x1b\n" +
+	"\x17INVALID_IDENTIFIER_TYPE\x10\x01\x12\x16\n" +
+	"\x12INVALID_IDENTIFIER\x10\x02\x12\x0f\n" +
+	"\vINVALID_OTP\x10\x03\x12\x0f\n" +
+	"\vEXPIRED_OTP\x10\x04\"5\n" +
 	"\x0eRefreshRequest\x12#\n" +
-	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"\xe0\x03\n" +
+	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"\xc3\x03\n" +
 	"\x0fRefreshResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12A\n" +
 	"\n" +
@@ -975,24 +957,22 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"AuthTokens\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
 	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\x12,\n" +
-	"\x12expires_in_seconds\x18\x03 \x01(\x05R\x10expiresInSeconds\"\x88\x01\n" +
-	"\tErrorCode\x12\x1a\n" +
-	"\x16ERROR_CODE_UNSPECIFIED\x10\x00\x12\x12\n" +
-	"\x0eINTERNAL_ERROR\x10\x01\x12\x15\n" +
-	"\x11ACCOUNT_NOT_FOUND\x10\x02\x12\x19\n" +
-	"\x15INVALID_REFRESH_TOKEN\x10\x03\x12\x19\n" +
-	"\x15EXPIRED_REFRESH_TOKEN\x10\x04\"4\n" +
+	"\x12expires_in_seconds\x18\x03 \x01(\x05R\x10expiresInSeconds\"l\n" +
+	"\tErrorCode\x12\x12\n" +
+	"\x0eINTERNAL_ERROR\x10\x00\x12\x15\n" +
+	"\x11ACCOUNT_NOT_FOUND\x10\x01\x12\x19\n" +
+	"\x15INVALID_REFRESH_TOKEN\x10\x02\x12\x19\n" +
+	"\x15EXPIRED_REFRESH_TOKEN\x10\x03\"4\n" +
 	"\rLogoutRequest\x12#\n" +
-	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"\xe9\x01\n" +
+	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"\xcd\x01\n" +
 	"\x0eLogoutResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12@\n" +
 	"\n" +
 	"error_code\x18\x02 \x01(\x0e2!.auth.v1.LogoutResponse.ErrorCodeR\terrorCode\x12#\n" +
-	"\rerror_message\x18\x03 \x01(\tR\ferrorMessage\"V\n" +
-	"\tErrorCode\x12\x1a\n" +
-	"\x16ERROR_CODE_UNSPECIFIED\x10\x00\x12\x12\n" +
-	"\x0eINTERNAL_ERROR\x10\x01\x12\x19\n" +
-	"\x15INVALID_REFRESH_TOKEN\x10\x02*G\n" +
+	"\rerror_message\x18\x03 \x01(\tR\ferrorMessage\":\n" +
+	"\tErrorCode\x12\x12\n" +
+	"\x0eINTERNAL_ERROR\x10\x00\x12\x19\n" +
+	"\x15INVALID_REFRESH_TOKEN\x10\x01*G\n" +
 	"\x0eIdentifierType\x12\x1f\n" +
 	"\x1bIDENTIFIER_TYPE_UNSPECIFIED\x10\x00\x12\t\n" +
 	"\x05PHONE\x10\x01\x12\t\n" +
