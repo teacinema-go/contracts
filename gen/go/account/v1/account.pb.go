@@ -72,6 +72,7 @@ type GetAccountResponse_ErrorCode int32
 const (
 	GetAccountResponse_INTERNAL_ERROR    GetAccountResponse_ErrorCode = 0
 	GetAccountResponse_ACCOUNT_NOT_FOUND GetAccountResponse_ErrorCode = 1
+	GetAccountResponse_INVALID_ID        GetAccountResponse_ErrorCode = 2
 )
 
 // Enum value maps for GetAccountResponse_ErrorCode.
@@ -79,10 +80,12 @@ var (
 	GetAccountResponse_ErrorCode_name = map[int32]string{
 		0: "INTERNAL_ERROR",
 		1: "ACCOUNT_NOT_FOUND",
+		2: "INVALID_ID",
 	}
 	GetAccountResponse_ErrorCode_value = map[string]int32{
 		"INTERNAL_ERROR":    0,
 		"ACCOUNT_NOT_FOUND": 1,
+		"INVALID_ID":        2,
 	}
 )
 
@@ -316,16 +319,18 @@ const file_account_v1_account_proto_rawDesc = "" +
 	"\x18account/v1/account.proto\x12\n" +
 	"account.v1\"#\n" +
 	"\x11GetAccountRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"\x83\x02\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"\x93\x02\n" +
 	"\x12GetAccountResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12G\n" +
 	"\n" +
 	"error_code\x18\x02 \x01(\x0e2(.account.v1.GetAccountResponse.ErrorCodeR\terrorCode\x12#\n" +
 	"\rerror_message\x18\x03 \x01(\tR\ferrorMessage\x12-\n" +
-	"\aaccount\x18\x04 \x01(\v2\x13.account.v1.AccountR\aaccount\"6\n" +
+	"\aaccount\x18\x04 \x01(\v2\x13.account.v1.AccountR\aaccount\"F\n" +
 	"\tErrorCode\x12\x12\n" +
 	"\x0eINTERNAL_ERROR\x10\x00\x12\x15\n" +
-	"\x11ACCOUNT_NOT_FOUND\x10\x01\"\xc3\x01\n" +
+	"\x11ACCOUNT_NOT_FOUND\x10\x01\x12\x0e\n" +
+	"\n" +
+	"INVALID_ID\x10\x02\"\xc3\x01\n" +
 	"\aAccount\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05phone\x18\x02 \x01(\tR\x05phone\x12\x14\n" +

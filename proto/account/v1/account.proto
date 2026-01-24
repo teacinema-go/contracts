@@ -21,6 +21,7 @@ message GetAccountResponse {
   enum ErrorCode {
     INTERNAL_ERROR = 0;
     ACCOUNT_NOT_FOUND = 1;
+    INVALID_ID = 2;
   }
 }
 
