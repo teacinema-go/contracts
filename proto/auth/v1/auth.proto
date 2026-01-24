@@ -8,6 +8,7 @@ service AuthService{
   rpc SendOtp (SendOtpRequest) returns (SendOtpResponse);
   rpc VerifyOtp (VerifyOtpRequest) returns (VerifyOtpResponse);
   rpc Refresh (RefreshRequest) returns (RefreshResponse);
+  rpc Logout (LogoutRequest) returns (LogoutResponse);
 }
 
 message SendOtpRequest{
@@ -85,6 +86,22 @@ message RefreshResponse{
     ACCOUNT_NOT_FOUND = 2;
     INVALID_REFRESH_TOKEN = 3;
     EXPIRED_REFRESH_TOKEN = 4;
+  }
+}
+
+message LogoutRequest {
+  string refresh_token = 1;
+}
+
+message LogoutResponse {
+  bool success = 1;
+  ErrorCode error_code = 2;
+  string error_message = 3;
+
+  enum ErrorCode {
+    ERROR_CODE_UNSPECIFIED = 0;
+    INTERNAL_ERROR = 1;
+    INVALID_REFRESH_TOKEN = 2;
   }
 }
 
