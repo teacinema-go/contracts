@@ -76,6 +76,7 @@ const (
 	SendOtpResponse_INTERNAL_ERROR          SendOtpResponse_ErrorCode = 0
 	SendOtpResponse_INVALID_IDENTIFIER_TYPE SendOtpResponse_ErrorCode = 1
 	SendOtpResponse_INVALID_IDENTIFIER      SendOtpResponse_ErrorCode = 2
+	SendOtpResponse_ACCOUNT_ALREADY_EXISTS  SendOtpResponse_ErrorCode = 3
 )
 
 // Enum value maps for SendOtpResponse_ErrorCode.
@@ -84,11 +85,13 @@ var (
 		0: "INTERNAL_ERROR",
 		1: "INVALID_IDENTIFIER_TYPE",
 		2: "INVALID_IDENTIFIER",
+		3: "ACCOUNT_ALREADY_EXISTS",
 	}
 	SendOtpResponse_ErrorCode_value = map[string]int32{
 		"INTERNAL_ERROR":          0,
 		"INVALID_IDENTIFIER_TYPE": 1,
 		"INVALID_IDENTIFIER":      2,
+		"ACCOUNT_ALREADY_EXISTS":  3,
 	}
 )
 
@@ -909,7 +912,7 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\n" +
 	"identifier\x18\x01 \x01(\tR\n" +
 	"identifier\x12@\n" +
-	"\x0fidentifier_type\x18\x02 \x01(\x0e2\x17.auth.v1.IdentifierTypeR\x0eidentifierType\"\xdf\x02\n" +
+	"\x0fidentifier_type\x18\x02 \x01(\x0e2\x17.auth.v1.IdentifierTypeR\x0eidentifierType\"\xfb\x02\n" +
 	"\x0fSendOtpResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12A\n" +
 	"\n" +
@@ -917,11 +920,12 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\rerror_message\x18\x03 \x01(\tR\ferrorMessage\x12;\n" +
 	"\botp_info\x18\x04 \x01(\v2 .auth.v1.SendOtpResponse.OtpInfoR\aotpInfo\x1a7\n" +
 	"\aOtpInfo\x12,\n" +
-	"\x12expires_in_seconds\x18\x01 \x01(\x05R\x10expiresInSeconds\"T\n" +
+	"\x12expires_in_seconds\x18\x01 \x01(\x05R\x10expiresInSeconds\"p\n" +
 	"\tErrorCode\x12\x12\n" +
 	"\x0eINTERNAL_ERROR\x10\x00\x12\x1b\n" +
 	"\x17INVALID_IDENTIFIER_TYPE\x10\x01\x12\x16\n" +
-	"\x12INVALID_IDENTIFIER\x10\x02\"\x86\x01\n" +
+	"\x12INVALID_IDENTIFIER\x10\x02\x12\x1a\n" +
+	"\x16ACCOUNT_ALREADY_EXISTS\x10\x03\"\x86\x01\n" +
 	"\x10VerifyOtpRequest\x12\x1e\n" +
 	"\n" +
 	"identifier\x18\x01 \x01(\tR\n" +

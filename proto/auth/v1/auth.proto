@@ -30,6 +30,7 @@ message SendOtpResponse {
     INTERNAL_ERROR = 0;
     INVALID_IDENTIFIER_TYPE = 1;
     INVALID_IDENTIFIER = 2;
+    ACCOUNT_ALREADY_EXISTS = 3;
   }
 }
 
